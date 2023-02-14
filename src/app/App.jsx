@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { Landing, ListingDetail } from "../pages";
-import { TopNav } from "../components/TopNav";
+import { TopNav, Footer } from "../components";
+
+// import { TopNav } from "../components";
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
 }
 
 export default App;
+// <Footer />
 
 // <Route
 //         path="view-listing-detail"

@@ -1,4 +1,5 @@
 import { Lens } from "../../assets/svg/Lens";
+
 export const Search = () => {
   return (
     <div className="relative  flex flex-col justify-center">

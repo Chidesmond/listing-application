@@ -1,17 +1,13 @@
-import { Add, Gumtree, GumTreeII } from "../../assets/svg";
-import { Search } from "../index";
+import React from "react";
 
-export const TopNav = () => {
+export const Footer = () => {
   return (
-    <div className="shadow-[0_4px_4px_#818181] md:shadow-none pb-1">
+    <div>
       <div className="flex p-2 justify-around bg-primary items-center">
-        <div className="hidden md:block">
-          <GumTreeII />
-        </div>
-        <div className="block md:hidden">
+        <div className="">
           <Gumtree />
         </div>
-        <div className="w-5/12 md:w-12/12">
+        <div className="w-5/12">
           <Search />
         </div>
         <div className="relative flex border-solid border-2 border-red w-5/12 lg:w-2/12 justify-between items-center text-white">

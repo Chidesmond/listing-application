@@ -29,11 +29,11 @@ export const Landing = () => {
   };
 
   return (
-    <div className="border-solid border-2 border-orange-500 h-full flex mx-5 bg-[#FFF0F5]">
+    <div className="border-solid border-2 border-blue-500 h-full flex mt-2 mx-3 md:mx-20 bg-[#FFF0F5]">
       <div className="hidden md:w-1/5 border-solid border-2 border-black">
         Numero Uno
       </div>
-      <div className="flex flex-col border-black border-4 w-full">
+      <div className="flex flex-col w-full">
         <div className="self-end py-3 px-1">
           <div className="dropdown">
             <button
@@ -86,6 +86,10 @@ export const Landing = () => {
           </div>
         </div>
         <div className="">
+          <Listing />
+          <Listing />
+          <Listing />
+          <Listing />
           <Listing />
         </div>
       </div>
