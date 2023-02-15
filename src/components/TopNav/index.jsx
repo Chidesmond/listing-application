@@ -1,7 +1,6 @@
 import { Add, Gumtree, GumTreeII } from "../../assets/svg";
-import { Search } from "../index";
 
-import { Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Landing } from "../../pages/index";
 
 export const TopNav = () => {
@@ -16,7 +15,7 @@ export const TopNav = () => {
         <li>
           <NavLink
             to="/register"
-            className="hover:text-[#000000] text-white outline-none"
+            className="hover:text-[#0b0606] text-white outline-none"
           >
             <i className="fa-solid fa-user-plus mr-2"></i> Register
           </NavLink>

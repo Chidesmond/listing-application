@@ -1,17 +1,5 @@
 import { useState } from "react";
-import { Listing, Hero } from "../../components";
-
-const mobile = () => {};
-
-const desktop = () => {
-  return (
-    <div className="border-solid border-2 border-orange-500 h-full flex mx-5">
-      <div className="w-1/5 border-solid border-2 border-black">Numero Uno</div>
-      <div className="w-3/5">Anoglia</div>
-      <div className="w-1/5  border-solid border-2 border-black">Deux</div>
-    </div>
-  );
-};
+import { Listing, Hero, Search } from "../../components";
 
 export const Landing = () => {
   // search component
@@ -31,9 +19,8 @@ export const Landing = () => {
   return (
     <div>
       <Hero />
-      <div className="">
-        <Listing />
-        <Listing />
+      <Search />
+      <div className="border-4 border-black border-solid">
         <Listing />
         <Listing />
         <Listing />

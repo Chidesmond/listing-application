@@ -1,23 +1,38 @@
 import React from "react";
-import { Hero } from "../Hero";
 
 export const Listing = () => {
   return (
-    <div className="border-solid border-2 border-orange-500 h-auto flex mt-4">
-      <div className="w-4/12 border-solid border-2 border-sky-500">Image</div>
-      <div className="w-8/12 border-solid border-2 border-zinc-500 py-2 px-2">
-        <div className="text-primary text-sm font-medium">
-          2020 Volvo XC40 D4R-Design AWD
-        </div>
-        <div className="my-3 mt-3">
-          <span className="text-2xl font-semibold">R23,900</span>
-        </div>
-        <p className="text-xs mt-4">
-          Description and stufm,mdmvl;jkvl;kl;vkp;k
-        </p>
-        <div className="flex text-xs mt-4 justify-between">
-          <p className="">10 days ago</p>
-          <p>View more details</p>
+    <div className="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+      <div className="bg-gray-50 border border-gray-200 rounded p-6">
+        <div className="flex">
+          <img
+            className="hidden w-48 mr-6 md:block"
+            src="images/acme.png"
+            alt=""
+          />
+          <div>
+            <h3 className="text-2xl">
+              <a href="show.html">Senior Laravel Developer</a>
+            </h3>
+            <div className="text-xl font-bold mb-4">Acme Corp</div>
+            <ul className="flex">
+              <li className="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                <a href="#">Laravel</a>
+              </li>
+              <li className="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                <a href="#">API</a>
+              </li>
+              <li className="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                <a href="#">Backend</a>
+              </li>
+              <li className="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                <a href="#">Vue</a>
+              </li>
+            </ul>
+            <div className="text-lg mt-4">
+              <i className="fa-solid fa-location-dot"></i> Boston, MA
+            </div>
+          </div>
         </div>
       </div>
     </div>

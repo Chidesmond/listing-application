@@ -6,7 +6,7 @@ import { TopNav, Footer } from "../components";
 
 function App() {
   return (
-    <div className="bg-[#FFF0F5]">
+    <div>
       <TopNav />
       <Routes>
         <Route path="/" element={<Landing />} />
