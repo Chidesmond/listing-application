@@ -1,11 +1,11 @@
-export const Gumtree = () => {
+export const Gumtree = ({ width = 30, height = 30 }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="2 2 28 35"
-      width="30"
-      height="30"
+      width={width}
+      height={height}
     >
       <defs>
         <path id="a" d="M0 0h28v35H0z" />
