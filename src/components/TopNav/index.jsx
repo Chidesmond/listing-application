@@ -1,34 +1,38 @@
 import { Add, Gumtree, GumTreeII } from "../../assets/svg";
 import { Search } from "../index";
 
+import { Route, NavLink } from "react-router-dom";
+import { Landing } from "../../pages/index";
+
 export const TopNav = () => {
   return (
-    <div className="shadow-[0_4px_4px_#818181] md:shadow-none pb-1">
-      <div className="flex p-2 justify-around bg-primary items-center">
-        <div className="hidden md:block">
-          <GumTreeII />
-        </div>
-        <div className="block md:hidden">
+    <nav className="flex justify-between items-center mb-4 bg-primary">
+      <NavLink to="/">
+        <div className="ml-6 my-3 outline-none">
           <Gumtree />
         </div>
-        <div className="w-5/12 md:w-12/12">
-          <Search />
-        </div>
-        <div className="relative flex border-solid border-2 border-red w-5/12 lg:w-2/12 justify-between items-center text-white">
-          <div className="flex text-xs">
-            <div>Sign In</div>
-            <div className="pl-2">Log In</div>
-          </div>
-          <div className="absolute right-8 ">
-            <Add />
-          </div>
-          <div>Post</div>
-        </div>
-      </div>
-      <div className="bg-black text-white">Categories</div>
-      <div className="bg-black text-white py-1 w-2/12 bg-secondary text-center ml-5 my-2 rounded-lg text-sm font-medium md:hidden">
-        Filters
-      </div>
-    </div>
+      </NavLink>
+      <ul className="flex space-x-6 mr-6 text-lg">
+        <li>
+          <NavLink
+            to="/register"
+            className="hover:text-[#000000] text-white outline-none"
+          >
+            <i className="fa-solid fa-user-plus mr-2"></i> Register
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            href="/login"
+            className="hover:text-[#000000] text-white outline-none"
+          >
+            <i className="fa-solid fa-arrow-right-to-bracket mr-2"></i>
+            Login
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
   );
 };
+
+// <img className="w-24" src="images/gumtree.svg" alt="" class="logo" />

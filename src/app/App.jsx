@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Landing, ListingDetail } from "../pages";
+import { Landing, ListingDetail, Register, CreateListing } from "../pages";
 import { TopNav, Footer } from "../components";
 
 // import { TopNav } from "../components";
@@ -11,14 +11,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="listing-detail" element={<ListingDetail />} />
+        <Route path="register" element={<Register />} />
+        <Route path="create-listing" element={<CreateListing />} />
         <Route path="*" element={<div>Not found</div>} />
       </Routes>
+      <Footer />
     </div>
   );
 }
 
 export default App;
-// <Footer />
+
+// <Route path="create-listing" element={<CreateListing />} />
 
 // <Route
 //         path="view-listing-detail"
