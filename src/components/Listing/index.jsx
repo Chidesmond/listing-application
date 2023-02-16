@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
-import { getListings } from "../../api/listings.api";
-import { useQuery } from "@tanstack/react-query";
+// import { getListings } from "../../api/listings.api";
+// import { useQuery } from "@tanstack/react-query";
 
 export const Listing = ({ listing }) => {
   // const { data, status } = useQuery({
   //   queryKey: ["listings"],
   //   queryFn: getListings,
   // });
-
-  useEffect(() => {
-    console.log("TO BE LOVED!!", listing);
-  }, [listing]);
 
   return (
     <div className="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">

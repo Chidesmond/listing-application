@@ -21,6 +21,14 @@ export function register(payload) {
     });
 }
 
+export function logOut() {
+  console.log({ logOut });
+  return axios.post("http://localhost:8000/api/logout").then((res) => {
+    console.log({ res });
+    return res.data;
+  });
+}
+
 export function getPostsPaginated(page) {
   return axios
     .get("http://localhost:3000/posts", {

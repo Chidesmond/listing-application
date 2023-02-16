@@ -11,7 +11,7 @@ export const Register = () => {
   console.log({ token, setAuthorizationToken });
   // }, [token, setAuthorizationToken]);
 
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const nameRef = useRef();
   const emailRef = useRef();
@@ -39,7 +39,7 @@ export const Register = () => {
     mutation.mutate(payload, {
       onSuccess: (data) => {
         setAuthorizationToken({ authUser: data.user, authToken: data.token });
-        navigation("/");
+        navigate("/");
       },
     });
   };

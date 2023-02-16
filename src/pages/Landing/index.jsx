@@ -31,7 +31,7 @@ export const Landing = () => {
       <Search />
       <div className="border-4 border-sky-500 border-solid">
         {status === "success" &&
-          data.map((listing) => <Listing listing={listing} />)}
+          data.map((listing, key) => <Listing key={key} listing={listing} />)}
       </div>
     </div>
   );
