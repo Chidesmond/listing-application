@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Listing, Hero, Search } from "../../components";
+import { useQuery } from "@tanstack/react-query";
+import { getListings } from "../../api/listings.api";
 
 export const Landing = () => {
-  // search component
-
   const [isOpen, setOpen] = useState(false);
   const [current, setCurrent] = useState("Most Recent");
+
+  const { data, status } = useQuery({
+    queryKey: ["listings"],
+    queryFn: getListings,
+  });
+
+  useEffect(() => {
+    console.log({ data, status });
+  }, [data, status]);
 
   const handleDropDown = () => {
     setOpen(!isOpen);
@@ -20,10 +29,9 @@ export const Landing = () => {
     <div>
       <Hero />
       <Search />
-      <div className="border-4 border-black border-solid">
-        <Listing />
-        <Listing />
-        <Listing />
+      <div className="border-4 border-sky-500 border-solid">
+        {status === "success" &&
+          data.map((listing) => <Listing listing={listing} />)}
       </div>
     </div>
   );

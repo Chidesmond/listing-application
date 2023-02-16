@@ -22,7 +22,7 @@ export const TopNav = () => {
         </li>
         <li>
           <NavLink
-            href="/login"
+            to="/login"
             className="hover:text-[#000000] text-white outline-none"
           >
             <i className="fa-solid fa-arrow-right-to-bracket mr-2"></i>
@@ -33,5 +33,3 @@ export const TopNav = () => {
     </nav>
   );
 };
-
-// <img className="w-24" src="images/gumtree.svg" alt="" class="logo" />

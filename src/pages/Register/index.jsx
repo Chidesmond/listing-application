@@ -1,7 +1,23 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmationRef = useRef();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      password_confirmation: passwordConfirmationRef.current.value,
+    };
+  };
+
   return (
     <div className="mx-4">
       <div className="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
@@ -10,26 +26,28 @@ export const Register = () => {
           <p className="mb-4">Create an account to post ads</p>
         </header>
 
-        <form action="">
+        <form onSubmit={onSubmit}>
           <div className="mb-6">
-            <label for="name" className="inline-block text-lg mb-2">
+            <label htmlFor="name" className="inline-block text-lg mb-2">
               Name
             </label>
             <input
               type="text"
               className="border border-gray-200 rounded p-2 w-full"
               name="name"
+              ref={nameRef}
             />
           </div>
 
           <div className="mb-6">
-            <label for="email" className="inline-block text-lg mb-2">
+            <label htmlFor="email" className="inline-block text-lg mb-2">
               Email
             </label>
             <input
               type="email"
               className="border border-gray-200 rounded p-2 w-full"
               name="email"
+              ref={emailRef}
             />
 
             <p className="text-red-500 text-xs mt-1">
@@ -38,31 +56,36 @@ export const Register = () => {
           </div>
 
           <div className="mb-6">
-            <label for="password" className="inline-block text-lg mb-2">
+            <label htmlFor="password" className="inline-block text-lg mb-2">
               Password
             </label>
             <input
               type="password"
               className="border border-gray-200 rounded p-2 w-full"
               name="password"
+              ref={passwordRef}
             />
           </div>
 
           <div className="mb-6">
-            <label for="password2" className="inline-block text-lg mb-2">
+            <label
+              htmlFor="passwordConfirmation"
+              className="inline-block text-lg mb-2"
+            >
               Confirm Password
             </label>
             <input
               type="password"
+              name="passwordConfirmation"
               className="border border-gray-200 rounded p-2 w-full"
-              name="password2"
+              ref={passwordConfirmationRef}
             />
           </div>
 
           <div className="mb-6">
             <button
               type="submit"
-              className="bg-laravel text-white bg-primary rounded py-2 px-4 hover:bg-black"
+              className="bg-secondary text-white bg-primary rounded py-2 px-4 hover:bg-black"
             >
               Sign Up
             </button>
@@ -71,8 +94,8 @@ export const Register = () => {
           <div className="mt-8">
             <p>
               Already have an account?
-              <span className="text-laravel">
-                <NavLink to="/login">Login</NavLink>
+              <span className="text-secondary ml-2">
+                <Link to="/login">Login</Link>
               </span>
             </p>
           </div>
