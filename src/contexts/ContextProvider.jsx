@@ -1,22 +1,30 @@
 import { createContext, useContext, useState } from "react";
 
 const StateContext = createContext({
-  currentUser: null,
-  token: null,
-  setUser: () => {},
-  setToken: () => {},
+  // user: null,
+  // token: null,
+  // setAuthorizationToken: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("USER")) || null
+  );
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("ACCESS_TOKEN")) || null
+  );
 
-  const setToken = (token) => {
-    _setToken(token);
-    if (token) {
-      localStorage.setItem("ACCESS_TOKEN", token);
+  const isAuthenticated = !!token;
+
+  const setAuthorizationToken = ({ authUser, authToken }) => {
+    if (authToken && authUser) {
+      setUser(authUser);
+      setToken(authToken);
+      localStorage.setItem("ACCESS_TOKEN", JSON.stringify(authToken));
+      localStorage.setItem("USER", JSON.stringify(authUser));
     } else {
       localStorage.removeItem("ACCESS_TOKEN");
+      localStorage.removeItem("USER");
     }
   };
 
@@ -24,9 +32,9 @@ export const ContextProvider = ({ children }) => {
     <StateContext.Provider
       value={{
         user,
-        setUser,
         token,
-        setToken,
+        setAuthorizationToken,
+        isAuthenticated,
       }}
     >
       {children}

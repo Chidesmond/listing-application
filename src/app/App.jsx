@@ -8,8 +8,6 @@ import {
 } from "../pages";
 import { TopNav, Footer } from "../components";
 
-// import { TopNav } from "../components";
-
 function App() {
   return (
     <div>

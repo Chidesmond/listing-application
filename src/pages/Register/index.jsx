@@ -1,11 +1,30 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { register } from "../../api/listings.api";
+import { useStateContext } from "../../contexts/contextProvider";
 
 export const Register = () => {
+  const { setAuthorizationToken, token } = useStateContext();
+
+  // useEffect(() => {
+  console.log({ token, setAuthorizationToken });
+  // }, [token, setAuthorizationToken]);
+
+  const navigation = useNavigate();
+
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
+
+  const mutation = useMutation({
+    mutationFn: register,
+    onSuccess: () => {
+      // Invalidate and refetch
+      // queryClient.invalidateQueries({ queryKey: ["register"] });
+    },
+  });
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +35,13 @@ export const Register = () => {
       password: passwordRef.current.value,
       password_confirmation: passwordConfirmationRef.current.value,
     };
+
+    mutation.mutate(payload, {
+      onSuccess: (data) => {
+        setAuthorizationToken({ authUser: data.user, authToken: data.token });
+        navigation("/");
+      },
+    });
   };
 
   return (

@@ -12,6 +12,15 @@ export function getListings() {
     });
 }
 
+export function register(payload) {
+  return axios
+    .post("http://localhost:8000/api/register", payload)
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    });
+}
+
 export function getPostsPaginated(page) {
   return axios
     .get("http://localhost:3000/posts", {
