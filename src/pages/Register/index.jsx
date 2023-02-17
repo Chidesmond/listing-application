@@ -1,16 +1,9 @@
 import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { register } from "../../api/listings.api";
-import { useStateContext } from "../../contexts/contextProvider";
+import { register } from "../../api/api";
 
 export const Register = () => {
-  const { setAuthorizationToken, token } = useStateContext();
-
-  // useEffect(() => {
-  console.log({ token, setAuthorizationToken });
-  // }, [token, setAuthorizationToken]);
-
   const navigate = useNavigate();
 
   const nameRef = useRef();
@@ -20,10 +13,6 @@ export const Register = () => {
 
   const mutation = useMutation({
     mutationFn: register,
-    onSuccess: () => {
-      // Invalidate and refetch
-      // queryClient.invalidateQueries({ queryKey: ["register"] });
-    },
   });
 
   const onSubmit = (e) => {

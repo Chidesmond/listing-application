@@ -1,22 +1,15 @@
 import { Gumtree } from "../../assets/svg";
-import { useMutation } from "@tanstack/react-query";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useStateContext } from "../../contexts/contextProvider";
-import { logOut } from "../../api/listings.api";
 
 export const TopNav = () => {
-  const { isAuthenticated, setAuthorizationToken } = useStateContext();
-
-  const mutation = useMutation(() => {
-    return logOut();
-  });
+  const { isAuthenticated, setAuthorizationToken, logOut } = useStateContext();
 
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    mutation.mutate();
-    setAuthorizationToken({ authUser: null, authToken: null });
-    navigate("/");
+    logOut();
+    navigate("/login");
   };
 
   return (
@@ -49,13 +42,13 @@ export const TopNav = () => {
           </>
         ) : (
           <>
-            <a
+            <button
               className="hover:text-[#000000] text-white outline-none"
-              onClick={() => handleLogOut()}
+              onClick={handleLogOut}
             >
               <i className="fa-solid fa-arrow-right-to-bracket mr-2"></i>
               Log Out
-            </a>
+            </button>
           </>
         )}
       </ul>

@@ -1,6 +1,39 @@
-import { NavLink } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { useRef, useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logIn } from "../../api/api";
+import { useStateContext } from "../../contexts/contextProvider";
+// import { StoreContext } from "../../contexts/ContextProvider";
 
 export const Login = () => {
+  const { setAuthorizationToken, token } = useStateContext();
+
+  const navigate = useNavigate();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const mutation = useMutation({
+    mutationFn: logIn,
+  });
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    mutation.mutate(payload, {
+      onSuccess: async (data) => {
+        setAuthorizationToken({ authUser: data.user, authToken: data.token });
+        navigate("/");
+        console.log({ state });
+      },
+    });
+  };
+
   return (
     <div className="mx-4">
       <div className="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
@@ -9,7 +42,7 @@ export const Login = () => {
           <p className="mb-4">Log in to post ads</p>
         </header>
 
-        <form action="">
+        <form onSubmit={handleOnSubmit}>
           <div className="mb-6">
             <label htmlFor="email" className="inline-block text-lg mb-2">
               Email
@@ -18,6 +51,7 @@ export const Login = () => {
               type="email"
               className="border border-gray-200 rounded p-2 w-full"
               name="email"
+              ref={emailRef}
             />
           </div>
 
@@ -29,6 +63,7 @@ export const Login = () => {
               type="password"
               className="border border-gray-200 rounded p-2 w-full"
               name="password"
+              ref={passwordRef}
             />
           </div>
 
