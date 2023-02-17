@@ -9,6 +9,13 @@ export function getListings(pageNo = 1) {
     });
 }
 
+export function getListing(id) {
+  return axios.get(`http://localhost:8000/api/listings/${id}`).then((res) => {
+    console.log({ res });
+    return res.data;
+  });
+}
+
 export function register(payload) {
   return axios
     .post("http://localhost:8000/api/register", payload)

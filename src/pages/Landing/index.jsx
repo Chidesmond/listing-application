@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Listing, Hero, Search } from "../../components";
+import { Listing, Hero, Search, Pagination } from "../../components";
 import { useQuery } from "@tanstack/react-query";
 import { getListings } from "../../api/api";
 import ReactPaginate from "react-paginate";
@@ -13,11 +13,7 @@ export const Landing = () => {
     queryFn: () => getListings(pageNo + 1),
   });
 
-  const isSuccess = status === "success";
-
-  console.log({ pageCount, data, status });
   const handlePageClick = (event) => {
-    console.log("BViodun", event);
     setPageNo(event.selected);
   };
 
@@ -34,25 +30,6 @@ export const Landing = () => {
       <div className="mx-4">
         {status === "success" && (
           <div>
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel="next >"
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={2}
-              pageCount={pageCount}
-              previousLabel="< previous"
-              renderOnZeroPageCount={null}
-              pageClassName="page-item"
-              pageLinkClassName="page-link"
-              previousClassName="page-item"
-              previousLinkClassName="page-link"
-              nextClassName="page-item"
-              nextLinkClassName="page-link"
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
-              containerClassName="pagination"
-              activeClassName="active"
-            />
             <div className="grid md:grid-cols-2 gap-4">
               {data.data.map((listing, key) => (
                 <Listing key={key} listing={listing} />
@@ -61,6 +38,27 @@ export const Landing = () => {
           </div>
         )}
       </div>
+      <Pagination />
     </div>
   );
 };
+
+// <ReactPaginate
+//   breakLabel="..."
+//   nextLabel="next >"
+//   onPageChange={handlePageClick}
+//   pageRangeDisplayed={2}
+//   pageCount={pageCount}
+//   previousLabel="< previous"
+//   renderOnZeroPageCount={null}
+//   pageClassName="page-item"
+//   pageLinkClassName="page-link"
+//   previousClassName="page-item"
+//   previousLinkClassName="page-link"
+//   nextClassName="page-item"
+//   nextLinkClassName="page-link"
+//   breakClassName="page-item"
+//   breakLinkClassName="page-link"
+//   containerClassName="pagination"
+//   activeClassName="active"
+// />;
