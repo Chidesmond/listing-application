@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/listing-detail" element={<ListingDetail />} />
         <Route path="create-listing" element={<CreateListing />} />
-        <Route path="*" element={<div>Not found</div>} />
+        <Route path="*" element={<div>Not Found</div>} />
       </Routes>
       <Footer />
     </>
